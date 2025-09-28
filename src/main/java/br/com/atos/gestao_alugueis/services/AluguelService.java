@@ -24,11 +24,6 @@ public class AluguelService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public Aluguel save(Aluguel aluguel) {
-        Aluguel alu = aluguelRepository.save(aluguel);
-        return alu;
-    }
-
     public AluguelResponseDto salvarAluguel(AluguelDto aluguelDto){
         Aluguel aluguel = new Aluguel();
         Imovel imovel = imovelRepository.findById(aluguelDto.getImovelId())
@@ -46,4 +41,12 @@ public class AluguelService {
     }
 
 
+    public AluguelResponseDto atualizarStatusPagamento(Long id, boolean pago) {
+        Aluguel aluguel = aluguelRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aluguel não encontrado."));
+
+        aluguel.setPago(pago);
+        Aluguel atualizado = aluguelRepository.save(aluguel);
+        return modelMapper.map(atualizado, AluguelResponseDto.class);
+    }
 }

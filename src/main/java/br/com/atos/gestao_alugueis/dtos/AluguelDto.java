@@ -1,5 +1,6 @@
 package br.com.atos.gestao_alugueis.dtos;
 
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
@@ -10,7 +11,7 @@ public class AluguelDto {
     @NotNull
     private Long ImovelId;
     private Long inquilinoId;
-    @Min(0)
+    @DecimalMin(value = "0.0", inclusive = true, message = "O valor do aluguel deve ser maior ou igual a zero.")
     private double valor;
     private LocalDate dataVencimento;
 
