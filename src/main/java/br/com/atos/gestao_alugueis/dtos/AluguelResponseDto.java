@@ -3,6 +3,7 @@ package br.com.atos.gestao_alugueis.dtos;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class AluguelResponseDto {
@@ -11,7 +12,7 @@ public class AluguelResponseDto {
     private Long ImovelId;
     private Long inquilinoId;
     @Min(0)
-    private double valor;
+    private BigDecimal valor;
     private LocalDate dataVencimento;
     private boolean pago;
 
@@ -31,11 +32,11 @@ public class AluguelResponseDto {
         this.inquilinoId = inquilinoId;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

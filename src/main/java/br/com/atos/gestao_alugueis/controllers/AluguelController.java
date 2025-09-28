@@ -1,5 +1,6 @@
 package br.com.atos.gestao_alugueis.controllers;
 
+import br.com.atos.gestao_alugueis.dtos.AluguelAtrasadoResponseDto;
 import br.com.atos.gestao_alugueis.dtos.AluguelDto;
 import br.com.atos.gestao_alugueis.dtos.AluguelResponseDto;
 import br.com.atos.gestao_alugueis.dtos.AtualizarPagamentoDto;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -35,6 +37,12 @@ public class AluguelController {
             @RequestBody AtualizarPagamentoDto atualizarPagamentoDto){
         AluguelResponseDto responseDto = aluguelService.atualizarStatusPagamento(id, atualizarPagamentoDto.isPago());
         return ResponseEntity.ok(responseDto);
-
     }
+
+    @GetMapping("/atrasados")
+    public ResponseEntity<List<AluguelAtrasadoResponseDto>> listarAtrasados(){
+        List<AluguelAtrasadoResponseDto> atrasados = aluguelService.listarAtrasados();
+        return ResponseEntity.ok(atrasados);
+    }
+
 }

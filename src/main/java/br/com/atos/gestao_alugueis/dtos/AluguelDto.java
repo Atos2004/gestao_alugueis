@@ -4,6 +4,7 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class AluguelDto {
@@ -12,7 +13,7 @@ public class AluguelDto {
     private Long ImovelId;
     private Long inquilinoId;
     @DecimalMin(value = "0.0", inclusive = true, message = "O valor do aluguel deve ser maior ou igual a zero.")
-    private double valor;
+    private BigDecimal valor;
     private LocalDate dataVencimento;
 
     public Long getImovelId() {
@@ -31,11 +32,11 @@ public class AluguelDto {
         this.inquilinoId = inquilinoId;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

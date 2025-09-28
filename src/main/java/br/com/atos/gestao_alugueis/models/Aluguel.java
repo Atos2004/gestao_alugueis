@@ -2,6 +2,7 @@ package br.com.atos.gestao_alugueis.models;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -20,7 +21,7 @@ public class Aluguel {
     @JoinColumn(name = "inquilinoId", nullable = true)
     private Inquilino inquilino;
 
-    private double valor;
+    private BigDecimal valor;
 
     private LocalDate dataVencimento;
 
@@ -29,7 +30,7 @@ public class Aluguel {
     public Aluguel() {
     }
 
-    public Aluguel(Long aluguelId, Imovel imovel, Inquilino inquilino, double valor, LocalDate dataVencimento, boolean pago) {
+    public Aluguel(Long aluguelId, Imovel imovel, Inquilino inquilino, BigDecimal valor, LocalDate dataVencimento, boolean pago) {
         this.aluguelId = aluguelId;
         this.imovel = imovel;
         this.inquilino = inquilino;
@@ -62,11 +63,11 @@ public class Aluguel {
         this.inquilino = inquilino;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
