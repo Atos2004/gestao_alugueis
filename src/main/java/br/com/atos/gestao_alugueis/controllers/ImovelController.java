@@ -19,11 +19,8 @@ public class ImovelController {
 
     @Autowired
     private ImovelService imovelService;
-    private final ModelMapper modelMapper;
-
-    public ImovelController(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping
     private ResponseEntity<ImovelDto> save(@Valid @RequestBody ImovelDto imovelDto){

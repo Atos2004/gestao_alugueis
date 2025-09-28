@@ -19,11 +19,8 @@ public class InquilinoController {
 
     @Autowired
     private InquilinoService inquilinoService;
-    private final ModelMapper modelMapper;
-
-    public InquilinoController(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
-    }
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping
     private ResponseEntity<InquilinoDto> save(@Valid @RequestBody InquilinoDto inquilinoDto){
